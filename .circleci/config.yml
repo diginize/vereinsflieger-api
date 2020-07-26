@@ -17,8 +17,8 @@ jobs:
             sed 's/"authors": \[/"authors": [\r\n        {"name": "Diginize", "homepage": "https:\/\/www.github.com\/diginize"},/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
             cd ..
             mv php/composer.json .
-            sed 's/"lib/"/"php/lib/"/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
-            sed 's/"test/"/"php/test/"/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
+            sed 's/"lib\/"/"php/lib/"/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
+            sed 's/"test\/"/"php/test/"/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
       - persist_to_workspace:
           root: .
           paths:
