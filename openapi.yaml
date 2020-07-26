@@ -1,0 +1,431 @@
+openapi: 3.0.3
+info:
+  title: Vereinsflieger REST API
+  version: '466.98009'
+externalDocs:
+  description: Official API documentation
+  url: https://www.vereinsflieger.de/member/help/download.php?file=VereinsfliegerRestInterface.pdf
+servers:
+  - url: https://www.vereinsflieger.de/interface/rest
+
+tags:
+  - name: auth
+    description: Request used for authentication against Vereinsflieger.de API
+  - name: members
+    description: Request about members. These requests require the right "Mitgliederdaten bearbeiten"
+
+paths:
+  /auth/accesstoken:
+    get:
+      tags:
+        - auth
+      operationId: GetAccesstoken
+      description: Returns an accesstoken
+      security: []
+      responses:
+        200:
+          $ref: '#/components/responses/AccessTokenResponse'
+  /auth/signin:
+    post:
+      tags:
+        - auth
+      operationId: Signin
+      description: Login with access token
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SignInCredentialsDto'
+      responses:
+        200:
+          $ref: '#/components/responses/OkResponse'
+        403:
+          $ref: '#/components/responses/LoginFailedResponse'
+  /auth/signout:
+    delete:
+      tags:
+        - auth
+      operationId: Signout
+      description: Logout with accesstoken
+      responses:
+        200:
+          $ref: '#/components/responses/OkResponse'
+        401:
+          $ref: '#/components/responses/UnauthorizedResponse'
+  /auth/getuser:
+    post:
+      tags:
+        - auth
+      operationId: GetUser
+      description: Get details of the current user
+      responses:
+        200:
+          $ref: '#/components/responses/UserResponse'
+        401:
+          $ref: '#/components/responses/UnauthorizedResponse'
+
+  /user/list:
+    post:
+      tags:
+        - members
+      operationId: GetMembers
+      description: Get a list of all members
+      responses:
+        200:
+          $ref: '#/components/responses/UsersResponse'
+        400:
+          $ref: '#/components/responses/BadRequestResponse'
+        401:
+          $ref: '#/components/responses/UnauthorizedResponse'
+
+components:
+
+  schemas:
+
+    VereinsfliegerResponseDto:
+      type: object
+      properties:
+        httpstatuscode:
+          type: integer
+          description: HTTP status code
+          example: 200
+
+    VereinsfliegerErrorDto:
+      allOf:
+        - $ref: '#/components/schemas/VereinsfliegerResponseDto'
+        - type: object
+          properties:
+            error:
+              type: string
+              description: The error message if an error occured
+
+    VereinsfliegerExtendedErrorDto:
+      allOf:
+        - $ref: '#/components/schemas/VereinsfliegerErrorDto'
+        - type: object
+          properties:
+            url:
+              type: string
+              example: /interface/rest/auth/getuser
+            accesstoken:
+              type: string
+              example: 86bfb5c7072caf127c49d5c7b13c5b3740c6dcf39cba44dc479f738e3b347324
+            PHPSESSID:
+              type: string
+              example: bfe7f1d8d48324db82247849971334c6
+            urlpath:
+              type: string
+              example: /interface/rest/auth/
+            urlfile:
+              type: string
+              example: getuser
+            passphrase:
+              type: string
+              example: 16c6bce39cbb44dc478f738e3b347324
+
+    AccessTokenDto:
+      type: object
+      properties:
+        accesstoken:
+          type: string
+          example: 86bfb5c7072caf127c49d5c7b13c5b3740c6dcf39cba44dc479f738e3b347324
+        URL:
+          type: string
+          description: The IP address of the server requested the access token
+          example: 91.16.191.254
+
+    SignInCredentialsDto:
+      type: object
+      required:
+       - appkey
+       - username
+       - password
+      properties:
+        appkey:
+          type: string
+          description: Aplication secret. To obtain one, contact the support of Vereinsflieger.de
+        username:
+          type: string
+        password:
+          type: string
+          description: The md5 hashed password of the user
+        cid:
+          type: integer
+          description: The club id. Only required if the user is member of multiple clubs
+        auth_secret:
+          type: string
+          description: The current OTP if 2FA is enabled for the user's account
+
+    LoginFailedDto:
+      type: object
+      properties:
+        need_2fa:
+          type: integer
+          description: Indicates weather the login needs 2FA
+          example: 1
+
+    UserDto:
+      type: object
+      properties:
+        uid:
+          type: integer
+          example: 98009
+        memberid:
+          type: string
+          description: Member number
+          example: 39
+        firstname:
+          type: string
+          example: Max
+        lastname:
+          type: string
+          example: Mustermann
+        email:
+          type: string
+          format: email
+          example: max@mustermann.de
+        status:
+          type: string
+          description: Membership status
+          example: aktiv
+        roles:
+          type: array
+          description: Assigned roles
+          items:
+            type: string
+            example: Mitglied
+
+    ExtendedUserDto:
+      type: object
+      properties:
+        uid:
+          type: integer
+          example: 98009
+        title:
+          type: string
+          example: Dr.
+        firstname:
+          type: string
+          example: Max
+        lastname:
+          type: string
+          example: Mustermann
+        careof:
+          type: string
+          description: Adresszusatz
+        street:
+          type: string
+          example: Musterstraße 123
+        zipcode:
+          type: string
+          example: 12345
+        town:
+          type: string
+          example: Musterhausen
+        email:
+          type: string
+          format: email
+          example: max@mustermann.de
+        gender:
+          type: string
+          enum:
+            - m
+            - w
+        birthday:
+          type: string
+          example: 05.02.1974
+        birthplace:
+          type: string
+          example: Musterhausen
+        homenumber:
+          type: string
+          description: private
+          example: 030 123456789
+        mobilenumber:
+          type: string
+          description: private mobile
+          example: 0123 456789
+        phonenumber:
+          type: string
+          description: business
+          example: 030 123456789
+        phnenumber2:
+          type: string
+          description: business mobile
+          example: 0123 456789
+        carlicenseplate:
+          type: string
+          example: B VF 123
+        identification:
+          type: string
+          description: ID card number
+        natoid:
+          type: string
+          description: NatoID
+        policecert_validto:
+          type: string
+          description: Führungszeugnis
+          example: 06.02.2021
+        ice_contact1:
+          type: string
+          description: Emergency contact 1
+        ice_contact2:
+          type: string
+          description: Emergency contact 2
+        memberid:
+          type: string
+          description: Member number
+          example: 39
+        memberbegin:
+          type: string
+          description: Eintrittsdatum
+          example: 01.05.2020
+        memberend:
+          type: string
+          description: Austrittsdatum
+          example: 31.12.2020
+        lettertitle:
+          type: string
+          description: Briefanrede
+          example: Herr Mustermann
+        memberstatus:
+          type: string
+          description: Membership status
+          example: aktiv
+        country:
+          type: string
+          example: Deutschland
+        bankaccountname:
+          type: string
+          description: Mitgliedsstatus
+          example: Max Mustermann
+        directdebitauth:
+          type: integer
+          description: Lastschrift
+          example: 1
+        iban:
+          type: string
+          example: DE10123456780123456789
+        bic:
+          type: string
+          example: ABCDDEXXXX1X
+        mandate:
+          type: string
+          description: Mandate id
+          example: OurClub0039
+        mandatedate:
+          type: string
+          example: 10.01.2020
+        mailrecipient:
+          type: integer
+          description: Rundmailempfänger
+          example: 1
+        roles:
+          type: array
+          description: Assigned roles
+          items:
+            type: string
+            example: Mitglied
+        sector:
+          type: array
+          description: Zugeordnete Sparten
+          items:
+            type: string
+            example: Segelflug
+        functions:
+          type: array
+          items:
+            type: string
+            example: 1. Vorsitzender
+        educations:
+          type: array
+          description: Nicht beendete Lehrpläne
+          items:
+            type: string
+
+  responses:
+
+    OkResponse:
+      description: Ok
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/VereinsfliegerResponseDto'
+
+    BadRequestResponse:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/VereinsfliegerExtendedErrorDto'
+              - properties:
+                  httpstatuscode:
+                    example: 400
+                  error:
+                    example: Bad request
+
+    UnauthorizedResponse:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/VereinsfliegerExtendedErrorDto'
+              - properties:
+                  httpstatuscode:
+                    example: 401
+                  error:
+                    example: Unauthorized
+
+    AccessTokenResponse:
+      description: Access token response
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/VereinsfliegerResponseDto'
+              - $ref: '#/components/schemas/AccessTokenDto'
+
+    LoginFailedResponse:
+      description: Login failed
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/VereinsfliegerErrorDto'
+              - $ref: '#/components/schemas/LoginFailedDto'
+              - properties:
+                  httpstatuscode:
+                    example: 403
+                  error:
+                    example: Wrong User or wrong Password
+
+    UserResponse:
+      description: One user
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/VereinsfliegerResponseDto'
+              - $ref: '#/components/schemas/UserDto'
+
+    UsersResponse:
+      description: List of users
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/VereinsfliegerResponseDto'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/ExtendedUserDto'
+
+  securitySchemes:
+    access_token:
+      type: apiKey
+      name: accesstoken
+      in: query
+
+security:
+  - access_token: []
