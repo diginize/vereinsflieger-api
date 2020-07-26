@@ -21,7 +21,6 @@ jobs:
       - run:
           name: Generate PHP client
           command: |
-            git checkout master
             docker-entrypoint.sh generate --additional-properties=invokerPackage=Diginize\VereinsfliegerApi -i openapi.yaml -g php -o php
             cd php
             sed 's/GIT_USER_ID\/GIT_REPO_ID/diginize\/vereinsflieger-api/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
