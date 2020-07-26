@@ -1,12 +1,4 @@
-version: 2
-
-workflows:
-  build_and_deploy:
-    jobs:
-      - build
-      - deploy:
-          requires:
-            - build
+version: 2.1
 
 jobs:
   build:
@@ -17,14 +9,39 @@ jobs:
       - run:
           name: Generate PHP client
           command: |
-            docker-entrypoint.sh generate --additional-properties=invokerPackage=Diginize\VereinsfliegerApi -i openapi.yaml -g php -o php-client
-            cd php-client
+            docker-entrypoint.sh generate --additional-properties=invokerPackage=Diginize\VereinsfliegerApi -i openapi.yaml -g php -o php
+            cd php
             sed 's/GIT_USER_ID\/GIT_REPO_ID/diginize\/vereinsflieger-api/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
             sed 's/"license": "unlicense"/"license": "GPLv3"/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
             sed 's/"homepage": "https:\/\/openapi-generator.tech"/"homepage": "https:\/\/www.github.com\/diginize\/vereinsflieger-api"/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
             sed 's/"authors": \[/"authors": [\r\n        {"name": "Diginize", "homepage": "https:\/\/www.github.com\/diginize"},/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
             cd ..
+            mv php/composer.json .
+            sed 's/"lib/"/"php/lib/"/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
+            sed 's/"test/"/"php/test/"/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
     persist_to_workspace:
       root: .
       paths:
-        - ./php-client
+        - .
+
+  deploy:
+    docker:
+      - image: circleci/php
+    attach_workspace:
+      at: .
+    steps:
+      - run: |
+          git config user.email "ci@diginize.de"
+          git config user.name "Circle CI"
+          git add .
+          git commit -m "auto-build client"
+          git push
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
