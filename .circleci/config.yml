@@ -43,8 +43,9 @@ jobs:
       - attach_workspace:
           at: .
       - run: |
-          echo "Host *" > ~/.ssh/config
-          echo "    StrictHostKeyChecking no" > ~/.ssh/config
+          mkdir ~/.ssh
+          echo "Host *" >> ~/.ssh/config
+          echo "    StrictHostKeyChecking no" >> ~/.ssh/config
           chmod 400 ~/.ssh/config
           git config user.email "ci@diginize.de"
           git config user.name "Circle CI"
