@@ -1,4 +1,4 @@
-# DiginizeVereinsfliegerApi\AuthApi
+# Diginize\VereinsfliegerApi\AuthApi
 
 All URIs are relative to *https://www.vereinsflieger.de/interface/rest*
 
@@ -26,7 +26,7 @@ Returns an accesstoken
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-$apiInstance = new DiginizeVereinsfliegerApi\Api\AuthApi(
+$apiInstance = new Diginize\VereinsfliegerApi\Api\AuthApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
@@ -79,12 +79,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: access_token
-$config = DiginizeVereinsfliegerApi\Configuration::getDefaultConfiguration()->setApiKey('accesstoken', 'YOUR_API_KEY');
+$config = Diginize\VereinsfliegerApi\Configuration::getDefaultConfiguration()->setApiKey('accesstoken', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = DiginizeVereinsfliegerApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('accesstoken', 'Bearer');
+// $config = Diginize\VereinsfliegerApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('accesstoken', 'Bearer');
 
 
-$apiInstance = new DiginizeVereinsfliegerApi\Api\AuthApi(
+$apiInstance = new Diginize\VereinsfliegerApi\Api\AuthApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -124,7 +124,7 @@ This endpoint does not need any parameter.
 
 ## signin
 
-> \DiginizeVereinsfliegerApi\Model\VereinsfliegerResponseDto signin($appkey, $username, $password, $cid, $auth_secret)
+> \Diginize\VereinsfliegerApi\Model\VereinsfliegerResponseDto signin($appkey, $username, $password, $cid, $auth_secret)
 
 
 
@@ -138,12 +138,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: access_token
-$config = DiginizeVereinsfliegerApi\Configuration::getDefaultConfiguration()->setApiKey('accesstoken', 'YOUR_API_KEY');
+$config = Diginize\VereinsfliegerApi\Configuration::getDefaultConfiguration()->setApiKey('accesstoken', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = DiginizeVereinsfliegerApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('accesstoken', 'Bearer');
+// $config = Diginize\VereinsfliegerApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('accesstoken', 'Bearer');
 
 
-$apiInstance = new DiginizeVereinsfliegerApi\Api\AuthApi(
+$apiInstance = new Diginize\VereinsfliegerApi\Api\AuthApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -177,7 +177,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\DiginizeVereinsfliegerApi\Model\VereinsfliegerResponseDto**](../Model/VereinsfliegerResponseDto.md)
+[**\Diginize\VereinsfliegerApi\Model\VereinsfliegerResponseDto**](../Model/VereinsfliegerResponseDto.md)
 
 ### Authorization
 
@@ -195,7 +195,7 @@ Name | Type | Description  | Notes
 
 ## signout
 
-> \DiginizeVereinsfliegerApi\Model\VereinsfliegerResponseDto signout()
+> \Diginize\VereinsfliegerApi\Model\VereinsfliegerResponseDto signout()
 
 
 
@@ -209,12 +209,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: access_token
-$config = DiginizeVereinsfliegerApi\Configuration::getDefaultConfiguration()->setApiKey('accesstoken', 'YOUR_API_KEY');
+$config = Diginize\VereinsfliegerApi\Configuration::getDefaultConfiguration()->setApiKey('accesstoken', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = DiginizeVereinsfliegerApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('accesstoken', 'Bearer');
+// $config = Diginize\VereinsfliegerApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('accesstoken', 'Bearer');
 
 
-$apiInstance = new DiginizeVereinsfliegerApi\Api\AuthApi(
+$apiInstance = new Diginize\VereinsfliegerApi\Api\AuthApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -236,7 +236,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\DiginizeVereinsfliegerApi\Model\VereinsfliegerResponseDto**](../Model/VereinsfliegerResponseDto.md)
+[**\Diginize\VereinsfliegerApi\Model\VereinsfliegerResponseDto**](../Model/VereinsfliegerResponseDto.md)
 
 ### Authorization
 

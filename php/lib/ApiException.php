@@ -4,7 +4,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  DiginizeVereinsfliegerApi
+ * @package  Diginize\VereinsfliegerApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace DiginizeVereinsfliegerApi;
+namespace Diginize\VereinsfliegerApi;
 
 use \Exception;
 
@@ -34,7 +34,7 @@ use \Exception;
  * ApiException Class Doc Comment
  *
  * @category Class
- * @package  DiginizeVereinsfliegerApi
+ * @package  Diginize\VereinsfliegerApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */

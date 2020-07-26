@@ -4,7 +4,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  DiginizeVereinsfliegerApi
+ * @package  Diginize\VereinsfliegerApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace DiginizeVereinsfliegerApi\Api;
+namespace Diginize\VereinsfliegerApi\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use DiginizeVereinsfliegerApi\ApiException;
-use DiginizeVereinsfliegerApi\Configuration;
-use DiginizeVereinsfliegerApi\HeaderSelector;
-use DiginizeVereinsfliegerApi\ObjectSerializer;
+use Diginize\VereinsfliegerApi\ApiException;
+use Diginize\VereinsfliegerApi\Configuration;
+use Diginize\VereinsfliegerApi\HeaderSelector;
+use Diginize\VereinsfliegerApi\ObjectSerializer;
 
 /**
  * AuthApi Class Doc Comment
  *
  * @category Class
- * @package  DiginizeVereinsfliegerApi
+ * @package  Diginize\VereinsfliegerApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -119,7 +119,7 @@ class AuthApi
      * Operation getAccesstoken
      *
      *
-     * @throws \DiginizeVereinsfliegerApi\ApiException on non-2xx response
+     * @throws \Diginize\VereinsfliegerApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return VereinsfliegerResponseDto
      */
@@ -133,7 +133,7 @@ class AuthApi
      * Operation getAccesstokenWithHttpInfo
      *
      *
-     * @throws \DiginizeVereinsfliegerApi\ApiException on non-2xx response
+     * @throws \Diginize\VereinsfliegerApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of VereinsfliegerResponseDto, HTTP status code, HTTP response headers (array of strings)
      */
@@ -369,7 +369,7 @@ class AuthApi
      * Operation getUser
      *
      *
-     * @throws \DiginizeVereinsfliegerApi\ApiException on non-2xx response
+     * @throws \Diginize\VereinsfliegerApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return VereinsfliegerResponseDto|VereinsfliegerExtendedErrorDto
      */
@@ -383,7 +383,7 @@ class AuthApi
      * Operation getUserWithHttpInfo
      *
      *
-     * @throws \DiginizeVereinsfliegerApi\ApiException on non-2xx response
+     * @throws \Diginize\VereinsfliegerApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of VereinsfliegerResponseDto|VereinsfliegerExtendedErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
@@ -649,9 +649,9 @@ class AuthApi
      * @param  int $cid The club id. Only required if the user is member of multiple clubs (optional)
      * @param  string $auth_secret The current OTP if 2FA is enabled for the user&#39;s account (optional)
      *
-     * @throws \DiginizeVereinsfliegerApi\ApiException on non-2xx response
+     * @throws \Diginize\VereinsfliegerApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \DiginizeVereinsfliegerApi\Model\VereinsfliegerResponseDto|VereinsfliegerErrorDto
+     * @return \Diginize\VereinsfliegerApi\Model\VereinsfliegerResponseDto|VereinsfliegerErrorDto
      */
     public function signin($appkey, $username, $password, $cid = null, $auth_secret = null)
     {
@@ -668,9 +668,9 @@ class AuthApi
      * @param  int $cid The club id. Only required if the user is member of multiple clubs (optional)
      * @param  string $auth_secret The current OTP if 2FA is enabled for the user&#39;s account (optional)
      *
-     * @throws \DiginizeVereinsfliegerApi\ApiException on non-2xx response
+     * @throws \Diginize\VereinsfliegerApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \DiginizeVereinsfliegerApi\Model\VereinsfliegerResponseDto|VereinsfliegerErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Diginize\VereinsfliegerApi\Model\VereinsfliegerResponseDto|VereinsfliegerErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function signinWithHttpInfo($appkey, $username, $password, $cid = null, $auth_secret = null)
     {
@@ -707,14 +707,14 @@ class AuthApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\DiginizeVereinsfliegerApi\Model\VereinsfliegerResponseDto' === '\SplFileObject') {
+                    if ('\Diginize\VereinsfliegerApi\Model\VereinsfliegerResponseDto' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\DiginizeVereinsfliegerApi\Model\VereinsfliegerResponseDto', []),
+                        ObjectSerializer::deserialize($content, '\Diginize\VereinsfliegerApi\Model\VereinsfliegerResponseDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -732,7 +732,7 @@ class AuthApi
                     ];
             }
 
-            $returnType = '\DiginizeVereinsfliegerApi\Model\VereinsfliegerResponseDto';
+            $returnType = '\Diginize\VereinsfliegerApi\Model\VereinsfliegerResponseDto';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -751,7 +751,7 @@ class AuthApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\DiginizeVereinsfliegerApi\Model\VereinsfliegerResponseDto',
+                        '\Diginize\VereinsfliegerApi\Model\VereinsfliegerResponseDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -809,7 +809,7 @@ class AuthApi
      */
     public function signinAsyncWithHttpInfo($appkey, $username, $password, $cid = null, $auth_secret = null)
     {
-        $returnType = '\DiginizeVereinsfliegerApi\Model\VereinsfliegerResponseDto';
+        $returnType = '\Diginize\VereinsfliegerApi\Model\VereinsfliegerResponseDto';
         $request = $this->signinRequest($appkey, $username, $password, $cid, $auth_secret);
 
         return $this->client
@@ -982,9 +982,9 @@ class AuthApi
      * Operation signout
      *
      *
-     * @throws \DiginizeVereinsfliegerApi\ApiException on non-2xx response
+     * @throws \Diginize\VereinsfliegerApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \DiginizeVereinsfliegerApi\Model\VereinsfliegerResponseDto|VereinsfliegerExtendedErrorDto
+     * @return \Diginize\VereinsfliegerApi\Model\VereinsfliegerResponseDto|VereinsfliegerExtendedErrorDto
      */
     public function signout()
     {
@@ -996,9 +996,9 @@ class AuthApi
      * Operation signoutWithHttpInfo
      *
      *
-     * @throws \DiginizeVereinsfliegerApi\ApiException on non-2xx response
+     * @throws \Diginize\VereinsfliegerApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \DiginizeVereinsfliegerApi\Model\VereinsfliegerResponseDto|VereinsfliegerExtendedErrorDto, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Diginize\VereinsfliegerApi\Model\VereinsfliegerResponseDto|VereinsfliegerExtendedErrorDto, HTTP status code, HTTP response headers (array of strings)
      */
     public function signoutWithHttpInfo()
     {
@@ -1035,14 +1035,14 @@ class AuthApi
             $responseBody = $response->getBody();
             switch($statusCode) {
                 case 200:
-                    if ('\DiginizeVereinsfliegerApi\Model\VereinsfliegerResponseDto' === '\SplFileObject') {
+                    if ('\Diginize\VereinsfliegerApi\Model\VereinsfliegerResponseDto' === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer
                     } else {
                         $content = (string) $responseBody;
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\DiginizeVereinsfliegerApi\Model\VereinsfliegerResponseDto', []),
+                        ObjectSerializer::deserialize($content, '\Diginize\VereinsfliegerApi\Model\VereinsfliegerResponseDto', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1060,7 +1060,7 @@ class AuthApi
                     ];
             }
 
-            $returnType = '\DiginizeVereinsfliegerApi\Model\VereinsfliegerResponseDto';
+            $returnType = '\Diginize\VereinsfliegerApi\Model\VereinsfliegerResponseDto';
             $responseBody = $response->getBody();
             if ($returnType === '\SplFileObject') {
                 $content = $responseBody; //stream goes to serializer
@@ -1079,7 +1079,7 @@ class AuthApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\DiginizeVereinsfliegerApi\Model\VereinsfliegerResponseDto',
+                        '\Diginize\VereinsfliegerApi\Model\VereinsfliegerResponseDto',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1127,7 +1127,7 @@ class AuthApi
      */
     public function signoutAsyncWithHttpInfo()
     {
-        $returnType = '\DiginizeVereinsfliegerApi\Model\VereinsfliegerResponseDto';
+        $returnType = '\Diginize\VereinsfliegerApi\Model\VereinsfliegerResponseDto';
         $request = $this->signoutRequest();
 
         return $this->client

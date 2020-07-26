@@ -5,7 +5,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  DiginizeVereinsfliegerApi\Model
+ * @package  Diginize\VereinsfliegerApi\Model
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,12 +27,12 @@
  * Do not edit the class manually.
  */
 
-namespace DiginizeVereinsfliegerApi\Model;
+namespace Diginize\VereinsfliegerApi\Model;
 
 /**
  * Interface abstracting model access.
  *
- * @package DiginizeVereinsfliegerApi\Model
+ * @package Diginize\VereinsfliegerApi\Model
  * @author  OpenAPI Generator team
  */
 interface ModelInterface

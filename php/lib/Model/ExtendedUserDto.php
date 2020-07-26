@@ -5,7 +5,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  DiginizeVereinsfliegerApi
+ * @package  Diginize\VereinsfliegerApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace DiginizeVereinsfliegerApi\Model;
+namespace Diginize\VereinsfliegerApi\Model;
 
 use \ArrayAccess;
-use \DiginizeVereinsfliegerApi\ObjectSerializer;
+use \Diginize\VereinsfliegerApi\ObjectSerializer;
 
 /**
  * ExtendedUserDto Class Doc Comment
  *
  * @category Class
- * @package  DiginizeVereinsfliegerApi
+ * @package  Diginize\VereinsfliegerApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */

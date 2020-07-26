@@ -4,7 +4,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  DiginizeVereinsfliegerApi
+ * @package  Diginize\VereinsfliegerApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace DiginizeVereinsfliegerApi\Api;
+namespace Diginize\VereinsfliegerApi\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use DiginizeVereinsfliegerApi\ApiException;
-use DiginizeVereinsfliegerApi\Configuration;
-use DiginizeVereinsfliegerApi\HeaderSelector;
-use DiginizeVereinsfliegerApi\ObjectSerializer;
+use Diginize\VereinsfliegerApi\ApiException;
+use Diginize\VereinsfliegerApi\Configuration;
+use Diginize\VereinsfliegerApi\HeaderSelector;
+use Diginize\VereinsfliegerApi\ObjectSerializer;
 
 /**
  * MembersApi Class Doc Comment
  *
  * @category Class
- * @package  DiginizeVereinsfliegerApi
+ * @package  Diginize\VereinsfliegerApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -119,7 +119,7 @@ class MembersApi
      * Operation getMembers
      *
      *
-     * @throws \DiginizeVereinsfliegerApi\ApiException on non-2xx response
+     * @throws \Diginize\VereinsfliegerApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return VereinsfliegerResponseDto|VereinsfliegerExtendedErrorDto|VereinsfliegerExtendedErrorDto
      */
@@ -133,7 +133,7 @@ class MembersApi
      * Operation getMembersWithHttpInfo
      *
      *
-     * @throws \DiginizeVereinsfliegerApi\ApiException on non-2xx response
+     * @throws \Diginize\VereinsfliegerApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of VereinsfliegerResponseDto|VereinsfliegerExtendedErrorDto|VereinsfliegerExtendedErrorDto, HTTP status code, HTTP response headers (array of strings)
      */

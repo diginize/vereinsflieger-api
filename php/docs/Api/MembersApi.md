@@ -1,4 +1,4 @@
-# DiginizeVereinsfliegerApi\MembersApi
+# Diginize\VereinsfliegerApi\MembersApi
 
 All URIs are relative to *https://www.vereinsflieger.de/interface/rest*
 
@@ -24,12 +24,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: access_token
-$config = DiginizeVereinsfliegerApi\Configuration::getDefaultConfiguration()->setApiKey('accesstoken', 'YOUR_API_KEY');
+$config = Diginize\VereinsfliegerApi\Configuration::getDefaultConfiguration()->setApiKey('accesstoken', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = DiginizeVereinsfliegerApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('accesstoken', 'Bearer');
+// $config = Diginize\VereinsfliegerApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('accesstoken', 'Bearer');
 
 
-$apiInstance = new DiginizeVereinsfliegerApi\Api\MembersApi(
+$apiInstance = new Diginize\VereinsfliegerApi\Api\MembersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
