@@ -22,15 +22,15 @@ jobs:
           name: Generate PHP client
           command: |
             docker-entrypoint.sh generate --additional-properties=invokerPackage=Diginize\VereinsfliegerApi -i openapi.yaml -g php -o php
-            cd php
-            sed 's/GIT_USER_ID\/GIT_REPO_ID/diginize\/vereinsflieger-api/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
-            sed 's/"license": "unlicense"/"license": "GPLv3"/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
-            sed 's/"homepage": "https:\/\/openapi-generator.tech"/"homepage": "https:\/\/www.github.com\/diginize\/vereinsflieger-api"/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
-            sed 's/"authors": \[/"authors": [\r\n        {"name": "Diginize", "homepage": "https:\/\/www.github.com\/diginize"},/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
-            cd ..
-            mv php/composer.json .
-            sed 's/"lib\/"/"php\/lib\/"/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
-            sed 's/"test\/"/"php\/test\/"/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
+            #cd php
+            #sed 's/GIT_USER_ID\/GIT_REPO_ID/diginize\/vereinsflieger-api/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
+            #sed 's/"license": "unlicense"/"license": "GPL-3.0-only"/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
+            #sed 's/"homepage": "https:\/\/openapi-generator.tech",/"homepage": "https:\/\/www.github.com\/diginize\/vereinsflieger-api",/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
+            #sed 's/"authors": \[/"authors": [\r\n        {"name": "Diginize", "homepage": "https:\/\/www.github.com\/diginize"},/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
+            #cd ..
+            #mv php/composer.json .
+            #sed 's/"lib\/"/"php\/lib\/"/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
+            #sed 's/"test\/"/"php\/test\/"/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
       - persist_to_workspace:
           root: .
           paths:
