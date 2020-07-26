@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .php_cs
 .travis.yml
 README.md
@@ -35,15 +34,3 @@ lib/Model/VereinsfliegerExtendedErrorDtoAllOf.php
 lib/Model/VereinsfliegerResponseDto.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/AuthApiTest.php
-test/Api/MembersApiTest.php
-test/Model/AccessTokenDtoTest.php
-test/Model/ExtendedUserDtoTest.php
-test/Model/LoginFailedDtoTest.php
-test/Model/SignInCredentialsDtoTest.php
-test/Model/UserDtoTest.php
-test/Model/VereinsfliegerErrorDtoAllOfTest.php
-test/Model/VereinsfliegerErrorDtoTest.php
-test/Model/VereinsfliegerExtendedErrorDtoAllOfTest.php
-test/Model/VereinsfliegerExtendedErrorDtoTest.php
-test/Model/VereinsfliegerResponseDtoTest.php
