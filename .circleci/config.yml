@@ -1,11 +1,23 @@
 version: 2.1
 
 jobs:
+  checkout:
+    docker:
+      - image: circleci/php
+    steps:
+      - checkout
+      - run: git checkout master
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+
   build:
     docker:
       - image: openapitools/openapi-generator-cli
     steps:
-      - checkout
+      - attach_workspace:
+          at: .
       - run:
           name: Generate PHP client
           command: |
@@ -42,11 +54,12 @@ workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - build:
+      - checkout:
           filters:
             branches:
               only:
                 - master
+      - build
       - deploy:
           requires:
             - build
