@@ -1,0 +1,30 @@
+version: 2
+
+workflows:
+  build_and_deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+
+jobs:
+  build:
+    docker:
+      - image: openapitools/openapi-generator-cli
+    steps:
+      - checkout
+      - run:
+          name: Generate PHP client
+          command: |
+            docker-entrypoint.sh generate --additional-properties=invokerPackage=Diginize\VereinsfliegerApi -i openapi.yaml -g php -o php-client
+            cd php-client
+            sed 's/GIT_USER_ID\/GIT_REPO_ID/diginize\/vereinsflieger-api/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
+            sed 's/"license": "unlicense"/"license": "GPLv3"/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
+            sed 's/"homepage": "https:\/\/openapi-generator.tech"/"homepage": "https:\/\/www.github.com\/diginize\/vereinsflieger-api"/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
+            sed 's/"authors": \[/"authors": [\r\n        {"name": "Diginize", "homepage": "https:\/\/www.github.com\/diginize"},/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
+            cd ..
+    persist_to_workspace:
+      root: .
+      paths:
+        - ./php-client
