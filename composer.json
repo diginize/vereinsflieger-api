@@ -31,9 +31,9 @@
         "friendsofphp/php-cs-fixer": "^2.12"
     },
     "autoload": {
-        "psr-4": { "DiginizeVereinsfliegerApi\\" : "php/lib/" }
+        "psr-4": { "Diginize\\VereinsfliegerApi\\" : "php/lib/" }
     },
     "autoload-dev": {
-        "psr-4": { "DiginizeVereinsfliegerApi\\" : "php/test/" }
+        "psr-4": { "Diginize\\VereinsfliegerApi\\" : "php/test/" }
     }
 }
