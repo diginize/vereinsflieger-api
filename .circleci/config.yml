@@ -19,17 +19,17 @@ jobs:
             mv php/composer.json .
             sed 's/"lib/"/"php/lib/"/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
             sed 's/"test/"/"php/test/"/g' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
-    persist_to_workspace:
-      root: .
-      paths:
-        - .
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
 
   deploy:
     docker:
       - image: circleci/php
-    attach_workspace:
-      at: .
     steps:
+      - attach_workspace:
+          at: .
       - run: |
           git config user.email "ci@diginize.de"
           git config user.name "Circle CI"
